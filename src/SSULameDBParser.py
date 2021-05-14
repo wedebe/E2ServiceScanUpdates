@@ -148,26 +148,36 @@ class SSULameDBParser:
 
 	@staticmethod
 	def isVideoService(service_ref):
-		service_type = int(str(service_ref.split(':')[2]), 16)
-		print("[ServiceScanUpdates] Check isVideoService [%s] (%d)" % (service_ref, service_type))
-		# SD-Video or HD-Video
-		return service_type in (1, 4, 5, 6, 11, 22, 23, 24,) or service_type in (17, 25, 26, 27, 28, 29, 30, 31,)
+		service_type_str = str(service_ref.split(':')[2])
+		if service_type_str:
+			service_type = int(service_type_str, 16)
+			print("[ServiceScanUpdates] Check isVideoService [%s] (%d)" % (service_ref, service_type))
+			# SD-Video or HD-Video
+			return service_type in (1, 4, 5, 6, 11, 22, 23, 24,) or service_type in (17, 25, 26, 27, 28, 29, 30, 31,)
+		else:
+			return False
 
 	@staticmethod
 	def isRadioService(service_ref):
-		service_type = int(str(service_ref.split(':')[2]), 16)
-		# Radio
-		return service_type in (2, 10,)
+		service_ref_str = str(service_ref.split(':')[2])
+		if service_ref_str:
+			service_type = int(service_ref_str, 16)
+			print("[ServiceScanUpdates] Check isRadioService [%s] (%d)" % (service_ref, service_type))
+			# Radio
+			return service_type in (2, 10,)
+		else:
+			return False
 
 	@staticmethod
 	def isDataService(service_ref):
-		service_type = int(str(service_ref.split(':')[2]), 16)
-		# Data
-		if service_type in (3, 12, 13, 14, 15, 16, 128, 129,):
-			result = True
+		service_ref_str = str(service_ref.split(':')[2])
+		if service_ref_str:
+			service_type = int(service_ref_str, 16)
+			print("[ServiceScanUpdates] Check isDataService [%s] (%d)" % (service_ref, service_type))
+			# Data
+			return service_type in (3, 12, 13, 14, 15, 16, 128, 129,)
 		else:
-			result = False
-		return result
+			return False
 
 	@staticmethod
 	def hasNewFlag(service_ref):

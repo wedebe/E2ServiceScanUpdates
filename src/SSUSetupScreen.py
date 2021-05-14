@@ -9,7 +9,7 @@ from Components.ScrollLabel import ScrollLabel
 from enigma import eServiceReference, eServiceCenter, gFont, eTimer, eConsoleAppContainer, ePicLoad, loadPNG, getDesktop, eListboxPythonMultiContent, eListbox, RT_HALIGN_LEFT, RT_HALIGN_RIGHT, RT_HALIGN_CENTER, RT_VALIGN_CENTER
 from . import _
 
-version = "1.1"
+version = "1.2"
 
 sz_w = getDesktop(0).size().width()
 
