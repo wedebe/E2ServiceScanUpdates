@@ -11,5 +11,5 @@ Settings can be accessed via the Channel/Service Scan / Reception sub-menu.
 - Add new radio services [ Yes | No ]
 - Clear bouquet at each search [ Yes | No ]
 
-*Note:* For the `Service Scan Updates` bouquet to be appear, make sure that
+*Note:* For the `Service Scan Updates` bouquet to appear, make sure that
 the option to `Allow multiple bouquets` or `Enable multiple bouquets` is set
