@@ -1,7 +1,10 @@
 ﻿# -*- coding: utf-8 -*-
 from Plugins.Plugin import PluginDescriptor
 from Components.config import config
-from Components.ServiceScan import ServiceScan
+try:
+    from Components.ServiceScan import ServiceScan
+except ImportError:
+    from Screens.ServiceScan import ServiceScan
 from Tools.Directories import resolveFilename, SCOPE_CONFIG
 from . import _
 
@@ -36,7 +39,12 @@ def ServiceScan_execBegin(self):
 
 def ServiceScan_execEnd(self, onClose = True):
 	print("[ServiceScanUpdates] ServiceScan_execEnd (%d) [%s]" % (self.state, str(self.scanList[self.run]["flags"])))
-	if self.state == self.Done:
+	try:
+		STATE_DONE = self.Done
+	except AttributeError:
+		STATE_DONE = self.DONE
+
+	if self.state == STATE_DONE:
 		if config.plugins.servicescanupdates.add_new_tv_services.value or config.plugins.servicescanupdates.add_new_radio_services.value:
 			postScanDB = SSULameDBParser(resolveFilename(SCOPE_CONFIG) + "/lamedb")
 			postScanServices = postScanDB.getServices()
