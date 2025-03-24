@@ -84,12 +84,12 @@ def ServiceScan_execEnd(self, onClose = True):
 				if config.plugins.servicescanupdates.add_new_radio_services.value and len(newRadioServices) > 0:
 					bouquet_handler.addToIndexBouquet("radio")
 					if config.plugins.servicescanupdates.clear_bouquet.value:
-						bouquet_handler.createSSUBouquet(newTVServices, 'radio')
+						bouquet_handler.createSSUBouquet(newRadioServices, 'radio')
 					else:
 						if bouquet_handler.doesSSUBouquetFileExists("radio"):
-							bouquet_handler.appendToSSUBouquet(newTVServices, "radio")
+							bouquet_handler.appendToSSUBouquet(newRadioServices, "radio")
 						else:
-							bouquet_handler.createSSUBouquet(newTVServices, "radio")
+							bouquet_handler.createSSUBouquet(newRadioServices, "radio")
 
 				bouquet_handler.reloadBouquets()
 
